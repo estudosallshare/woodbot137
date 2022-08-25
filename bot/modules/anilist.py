@@ -173,12 +173,12 @@ def anime(update: Update, context: CallbackContext):
         image = json.get('bannerImage', None)
         if trailer:
             buttons = [
-                [InlineKeyboardButton("More Info", url=info),
+                [InlineKeyboardButton("Mais Informações", url=info),
                 InlineKeyboardButton("Trailer 🎬", url=trailer)]
                 ]
         else:
             buttons = [
-                [InlineKeyboardButton("More Info", url=info)]
+                [InlineKeyboardButton("Mais Informações", url=info)]
             ]
         if image:
             try:
@@ -226,15 +226,15 @@ def manga(update: Update, _):
             msg += f"*{title}*"
             if title_native:
                 msg += f"(`{title_native}`)"
-        if start_date: msg += f"\n*Start Date* - `{start_date}`"
+        if start_date: msg += f"\n*Data de Ínicio* - `{start_date}`"
         if status: msg += f"\n*Status* - `{status}`"
         if score: msg += f"\n*Score* - `{score}`"
-        msg += '\n*Genres* - '
+        msg += '\n*Genêros* - '
         for x in json.get('genres', []): msg += f"{x}, "
         msg = msg[:-2]
         info = json['siteUrl']
         buttons = [
-                [InlineKeyboardButton("More Info", url=info)]
+                [InlineKeyboardButton("Mais Informações", url=info)]
             ]
         image = json.get("bannerImage", False)
         msg += f"_{json.get('description', None)}_"
@@ -248,9 +248,9 @@ def manga(update: Update, _):
 
 def weebhelp(update, context):
     help_string = '''
-• `/anime`*:* search anime
-• `/character`*:* search character
-• `/manga`*:* search manga
+• `/anime`*:* procurar anime
+• `/character`*:* procurar personagem
+• `/manga`*:* procurar manga
 '''
     update.effective_message.reply_photo(IMAGE_URL, help_string, parse_mode=ParseMode.MARKDOWN)
 
