@@ -203,14 +203,14 @@ def start(update, context):
     if EMOJI_THEME is True:
         buttons.buildbutton(f"✧ {START_BTN1_NAME}", f"{START_BTN1_URL}")
         buttons.buildbutton(f"✧ {START_BTN2_NAME}", f"{START_BTN2_URL}")
-        buttons.buildbutton("★Owner", "https://t.me/woodcraft5")
+        buttons.buildbutton("★Owner", "https://t.me/")
     else:
         buttons.buildbutton(f"{START_BTN1_NAME}", f"{START_BTN1_URL}")
         buttons.buildbutton(f"{START_BTN2_NAME}", f"{START_BTN2_URL}")
-        buttons.buildbutton("★Owner", "https://t.me/woodcraft5")
+        buttons.buildbutton("★Owner", "https://t.me/")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
-        start_string = f'''Welcome ●✤◄ 𝐖𝐎𝐎𝐃𝐜𝐫𝐚𝐟𝐭 ►✤● Bot is Ready✔️
+        start_string = f'''Bem Vindo ao Bot está vivo ✔️
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         if PICS:
@@ -235,8 +235,8 @@ def restart(update, context):
         dynoRestart = False
         dynoKill = False
     if dynoRestart:
-        LOGGER.info("Dyno Restarting.")
-        restart_message = sendMessage("Dyno Restarting.", context.bot, update.message)
+        LOGGER.info("Reiniciando Dyno.")
+        restart_message = sendMessage("Dyno Reínicio.", context.bot, update.message)
         with open(".restartmsg", "w") as f:
             f.truncate(0)
             f.write(f"{restart_message.chat.id}\n{restart_message.message_id}\n")
@@ -245,7 +245,7 @@ def restart(update, context):
         app.restart()
     elif dynoKill:
         LOGGER.info("Killing Dyno. MUHAHAHA")
-        sendMessage("Killed Dyno.", context.bot, update.message)
+        sendMessage("Kill Dyno.", context.bot, update.message)
         alive.kill()
         clean_all()
         heroku_conn = heroku3.from_key(HEROKU_API_KEY)
@@ -254,8 +254,8 @@ def restart(update, context):
         for po in proclist:
             app.process_formation()[po.type].scale(0)
     else:
-        LOGGER.info("Normally Restarting.")
-        restart_message = sendMessage("✔️Normally Restarting.", context.bot, update.message)
+        LOGGER.info("Reínicio Normal.")
+        restart_message = sendMessage("✔️ Reinício Normal.", context.bot, update.message)
         if Interval:
             Interval[0].cancel()
             Interval.clear()
@@ -273,12 +273,12 @@ def restart(update, context):
 def ping(update, context):
     if EMOJI_THEME is True:
         start_time = int(round(time() * 1000))
-        reply = sendMessage("Starting_Ping ⛔", context.bot, update.message)
+        reply = sendMessage("Testando conexão... ⛔", context.bot, update.message)
         end_time = int(round(time() * 1000))
         editMessage(f'✔️{end_time - start_time} ms ', reply)
     else:
         start_time = int(round(time() * 1000))
-        reply = sendMessage("Starting_Ping ", context.bot, update.message)
+        reply = sendMessage("Testando conexão", context.bot, update.message)
         end_time = int(round(time() * 1000))
         editMessage(f'{end_time - start_time} ms ', reply)
 
@@ -293,7 +293,7 @@ Choose a help category:
 '''
 
 help_string_telegraph_user = f'''
-<b><u>👤 User Commands</u></b>
+<b><u>👤 Comandos dos Usuários </u></b>
 <br><br>
 • <b>/{BotCommands.HelpCommand}</b>: To get this message
 <br><br>
