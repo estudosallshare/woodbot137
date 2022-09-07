@@ -1,4 +1,4 @@
-FROM phandroid137/mirror:latest
+FROM private69/woodcraft-pv2:heroku
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
