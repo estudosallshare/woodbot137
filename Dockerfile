@@ -1,4 +1,4 @@
-FROM private69/woowcraft:heroku
+FROM phandroid137/mirror:latest
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
